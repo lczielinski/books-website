@@ -1,0 +1,41 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%=name%>'s' Favorite Books</title%>
+  </head>
+
+  <body style="font-family:'Courier New'">
+    <h1><%=name%>, input your favorite books!</h1>
+
+    <form action="/titles" method="POST">
+      <input type="text" placeholder="title" name="title" />
+      <input type="text" placeholder="author" name="author" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2> Bookshelf </h2>
+    <%if (titles.length == 0) {%>
+        <p1>Your bookshelf is empty!</p1>
+    <%} else {%>
+        <ul class="titles">
+        
+        <!-- Loop through titles -->
+        <% for(var i = 0; i < titles.length; i++) {%>
+            <li class="title">
+            <!-- Output name from the iterated title object -->
+            <span><%= titles[i].author %></span>:
+            <!-- Output quote from the iterated title object -->
+            <span><%= titles[i].title %></span>
+            </li>
+        <% } %>
+        </ul>
+
+        <div>
+            <button id="delete-button">Remove a book</button>
+        </div>
+    <% } %>
+    <script src="/main.js"></script>
+  </body>
+</html>
